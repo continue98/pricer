@@ -1,4 +1,4 @@
-<?
+<?php
 function money_to_str($v) {
 	if($v == null)
 		return "";

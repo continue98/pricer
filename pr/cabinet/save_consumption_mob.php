@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-<?
+<?php
 include('../template/connect.php');
 	
 if(!$_REQUEST['clsf_id'])

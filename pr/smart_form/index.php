@@ -1,4 +1,4 @@
-<?
+<?php
 include '../template/header.php';
 headerOut('Ввод данных', array('prod','shop'));
 include '../template/jstree/jstree.php';

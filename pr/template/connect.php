@@ -1,4 +1,4 @@
-<?
+<?php
 define('DB_TABLE_PREFIX', 'pr_');
 
 try {
@@ -8,6 +8,9 @@ try {
 	$db->query("SET NAMES 'utf8'");
 } catch (PDOException $e) {
 	print "Ошибка подключения к БД<br/>";
+
+	// print error connection to db
+	print $e;
 	die();
 }
 ?>

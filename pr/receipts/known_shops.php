@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 define('OK', "{\"status\":\"OK\"}");
 define('ERROR', "{\"error\":\"ERROR\"}");

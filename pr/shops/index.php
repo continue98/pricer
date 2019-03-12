@@ -1,4 +1,4 @@
-<?
+<?php
 	include '../template/header.php';
 	headerOut('Магазин');
 

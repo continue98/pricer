@@ -1,4 +1,4 @@
-<?
+<?php
 	define('OK', "{\"status\":\"OK\"}");
 	define('ERROR', "{\"error\":\"ERROR\"}");		
 

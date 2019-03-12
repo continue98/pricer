@@ -1,4 +1,4 @@
-<?
+<?php
 if($_REQUEST['author'] == 'Авторизоваться'){
     $stmt = $db->prepare("SELECT u.id, g.del_anothers_receipts, g.del_anothers_consumptions, g.del_anothers_shop_links
                         , g.del_anothers_product_links, g.del_anothers_shops, g.del_anothers_products

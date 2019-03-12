@@ -1,3 +1,4 @@
-<?
-header( 'Location: ./analytics/' );
+<?php
+    header( 'Location: ./analytics/' );
 ?>
+

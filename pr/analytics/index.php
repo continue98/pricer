@@ -45,7 +45,7 @@ headerOut('Аналитика');
 		});
 	}
 </script>
-<?
+<?php
 $isUserAutorized = ($_SESSION['user_id'] != null);
 
 if($isUserAutorized){
@@ -79,64 +79,85 @@ if($shops_){
 		<a id="select_product_button" class="fancybox" href="#select_product">Фильтровать по товару</a><br>
 	</b>
 	<div class="selected_items" id="selected_product">
-		<?if(is_array($_GET['product'])){
-			foreach($_GET['product'] as $k => $v){
-				echo '<span class="sel_item product" id="sel_prod_'.$v.'">'.$arProds[$v].'</span>';
+		<?php
+			if(is_array($_GET['product']))
+			{
+				foreach($_GET['product'] as $k => $v)
+				{
+					echo '<span class="sel_item product" id="sel_prod_'.$v.'">'.$arProds[$v].'</span>';
+				}
 			}
-		}?>
+		?>
 	</div>
 	<div id="select_product" style="display: none;">
 		<table class="main select" id="product_select_table"><tr><th></th><th>Название</th></tr>
-		<?foreach($arProds as $k => $v){
-			echo '<tr id="tr_prod_'.$k.'"';
-			if(is_array($_GET['product']) && in_array($k, $_GET['product'])) echo ' class="selected"';
-			echo '><td><input type="checkbox"';
-			if(is_array($_GET['product']) && in_array($k, $_GET['product'])) echo ' checked="checked"';
-			echo ' name="product[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_product\').append(\'<span class=&#34sel_item product&#34; id=&#34;sel_prod_'.$k.'&#34;>'.htmlspecialchars($v, ENT_QUOTES).'</span>\');} else {$(\'#sel_prod_'.$k.'\').remove();}" value="'.$k.'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.htmlspecialchars($v, ENT_QUOTES).'<div class="select_box">'.$k.'</div></td></tr>';
-		}?>
+		<?php
+			foreach($arProds as $k => $v)
+			{
+				echo '<tr id="tr_prod_'.$k.'"';
+				if(is_array($_GET['product']) && in_array($k, $_GET['product'])) echo ' class="selected"';
+					echo '><td><input type="checkbox"';
+				if(is_array($_GET['product']) && in_array($k, $_GET['product'])) echo ' checked="checked"';
+				echo ' name="product[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_product\').append(\'<span class=&#34sel_item product&#34; id=&#34;sel_prod_'.$k.'&#34;>'.htmlspecialchars($v, ENT_QUOTES).'</span>\');} else {$(\'#sel_prod_'.$k.'\').remove();}" value="'.$k.'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.htmlspecialchars($v, ENT_QUOTES).'<div class="select_box">'.$k.'</div></td></tr>';
+			}
+		?>
 		</table>
 	</div>
 	
 	<b><a id="select_equ_product_button" class="fancybox" href="#select_equ_product">Фильтровать по эквивалентным товарам</a></b><br>
 	<div class="selected_items" id="selected_equ_product">
-		<?if(is_array($_GET['equ_product'])){
-			foreach($_GET['equ_product'] as $k => $v){
-				echo '<span class="sel_item equ_product" id="sel_equ_prod_'.$v.'">'.$arEquProds[$v].'</span>';
+		<?php
+			if(is_array($_GET['equ_product'])){
+				foreach($_GET['equ_product'] as $k => $v)
+				{
+					echo '<span class="sel_item equ_product" id="sel_equ_prod_'.$v.'">'.$arEquProds[$v].'</span>';
+				}
 			}
-		}?>
+		?>
 	</div>
 	<div id="select_equ_product" style="display: none;">
 		<table class="main select" id="equ_product_select_table"><tr><th></th><th>Название</th></tr>
-		<?foreach($arEquProds as $k => $v){
-			echo '<tr id="tr_equ_prod_'.$k.'"';
-			if(is_array($_GET['equ_product']) && in_array($k, $_GET['equ_product'])) echo ' class="selected"';
-			echo '><td><input type="checkbox"';
-			if(is_array($_GET['equ_product']) && in_array($k, $_GET['equ_product'])) echo ' checked="checked"';
-			echo ' name="equ_product[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_equ_product\').append(\'<span class=&#34sel_item equ_prod&#34; id=&#34;sel_equ_prod_'.$k.'&#34;>'.htmlspecialchars($v, ENT_QUOTES).'</span>\');} else {$(\'#sel_equ_prod_'.$k.'\').remove();}" value="'.$k.'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v.'<div class="select_box">'.$k.'</div></td></tr>';
-		}?>
+		<?php
+			foreach($arEquProds as $k => $v)
+			{
+				echo '<tr id="tr_equ_prod_'.$k.'"';
+				if(is_array($_GET['equ_product']) && in_array($k, $_GET['equ_product'])) echo ' class="selected"';
+					echo '><td><input type="checkbox"';
+				if(is_array($_GET['equ_product']) && in_array($k, $_GET['equ_product'])) echo ' checked="checked"';
+					echo ' name="equ_product[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_equ_product\').append(\'<span class=&#34sel_item equ_prod&#34; id=&#34;sel_equ_prod_'.$k.'&#34;>'.htmlspecialchars($v, ENT_QUOTES).'</span>\');} else {$(\'#sel_equ_prod_'.$k.'\').remove();}" value="'.$k.'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v.'<div class="select_box">'.$k.'</div></td></tr>';
+			}
+		?>
 		</table>
 	</div>
 	
 	<b><a id="select_shop_button" class="fancybox" href="#select_shop">Фильтровать по магазину</a></b><br>
 	<div class="selected_items" id="selected_shop">
-		<?if(is_array($_GET['shops'])){
-			foreach($_GET['shops'] as $k => $v){
-				echo '<span class="sel_item shop" id="sel_shop_'.$v.'">'.$arShops[$v].'</span>';
+		<?php
+			if(is_array($_GET['shops']))
+			{
+				foreach($_GET['shops'] as $k => $v)
+				{
+					echo '<span class="sel_item shop" id="sel_shop_'.$v.'">'.$arShops[$v].'</span>';
+				}
 			}
-		}?>
+		?>
 	</div>
 	<div id="select_shop" style="display: none;">
 		<table class="main select" id="shop_select_table"><tr><th></th><th>Название</th><th>Сеть</th><th>Город</th><th>Адрес</th></tr>
-		<?foreach($shops_ as $k => $v){
-			echo '<tr id="tr_shop_'.$v['id'].'"';
-			if(is_array($_GET['shops']) && in_array($v['id'], $_GET['shops'])) echo ' class="selected"';
-			echo '><td><input type="checkbox"';
-			if(is_array($_GET['shops']) && in_array($v['id'], $_GET['shops'])) echo ' checked="checked"';
-			echo ' name="shops[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_shop\').append(\'<span class=&#34sel_item shop&#34; id=&#34;sel_shop_'.$v['id'].'&#34;>'.htmlspecialchars($v['name'], ENT_QUOTES).'</span>\');} else {$(\'#sel_shop_'.$v['id'].'\').remove();}" value="'.$v['id'].'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['name'].'<div class="select_box">'.$v['id'].'</div></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['network'].'</td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['town'].'</td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['address'].'</td></tr>';
-		}?>
+		<?php
+			foreach($shops_ as $k => $v)
+			{
+				echo '<tr id="tr_shop_'.$v['id'].'"';
+				if(is_array($_GET['shops']) && in_array($v['id'], $_GET['shops'])) 
+					echo ' class="selected"';
+				echo '><td><input type="checkbox"';
+				if(is_array($_GET['shops']) && in_array($v['id'], $_GET['shops'])) 
+					echo ' checked="checked"';
+				echo ' name="shops[]" onchange="$(this).closest(\'tr\').toggleClass(\'selected\'); if($(this).closest(\'tr\').hasClass(\'selected\')){ $(\'div.selected_items#selected_shop\').append(\'<span class=&#34sel_item shop&#34; id=&#34;sel_shop_'.$v['id'].'&#34;>'.htmlspecialchars($v['name'], ENT_QUOTES).'</span>\');} else {$(\'#sel_shop_'.$v['id'].'\').remove();}" value="'.$v['id'].'" ></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['name'].'<div class="select_box">'.$v['id'].'</div></td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['network'].'</td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['town'].'</td><td onclick="$(this).parent(\'tr\').find(\'input[type=checkbox]\').click();">'.$v['address'].'</td></tr>';
+			}
+		?>
 		</table>
 	</div>
-	
 	<?if($isUserAutorized) {?>
 		<b><a id="select_user_button" class="fancybox" href="#select_user">Фильтровать по автору</a></b><br>
 		<div class="selected_items" id="selected_user">

@@ -1,4 +1,6 @@
-<?session_start();?>
+<?php
+	session_start();
+?>
 <head>
 	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
 	<title>Чек</title>

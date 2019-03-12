@@ -1,4 +1,4 @@
-<?
+<?php
 include('../template/connect.php');
 if(!$_POST['clsf_name'])
 	die('Не указан расход');

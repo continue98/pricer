@@ -1,4 +1,5 @@
-<?session_start();
+<?php
+session_start();
 header( 'Content-Type: text/html; charset=utf-8' );
 include('../template/connect.php');
 

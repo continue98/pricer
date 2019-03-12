@@ -1,22 +1,22 @@
-<? 
-session_start();
-if($_REQUEST['exit'] == '1'){
-    unset($_SESSION['user_id']);
-    unset($_SESSION['user_del_anothers_receipts']);
-    unset($_SESSION['user_del_anothers_consumptions']);
-    unset($_SESSION['user_del_anothers_shop_links']);
-    unset($_SESSION['user_del_anothers_product_links']);
-    unset($_SESSION['user_del_anothers_shops']);
-    unset($_SESSION['user_del_anothers_products']);
-    unset($_SESSION['user_edt_anothers_shops']);
-    unset($_SESSION['user_edt_anothers_products']);
-    unset($_SESSION['user_upload_receipts_from_file']);
-}
-header('Content-Type: text/html; charset=utf-8');
-include 'connect.php';
-function headerOut($curmenu, $treesuf = null){
-$tabTitle = 'Ценовичок - '.$curmenu;
- ?>
+<?php
+	session_start();
+	if(!empty($_REQUEST['exit']) && $_REQUEST['exit'] == '1') {
+			unset($_SESSION['user_id']);
+			unset($_SESSION['user_del_anothers_receipts']);
+			unset($_SESSION['user_del_anothers_consumptions']);
+			unset($_SESSION['user_del_anothers_shop_links']);
+			unset($_SESSION['user_del_anothers_product_links']);
+			unset($_SESSION['user_del_anothers_shops']);
+			unset($_SESSION['user_del_anothers_products']);
+			unset($_SESSION['user_edt_anothers_shops']);
+			unset($_SESSION['user_edt_anothers_products']);
+			unset($_SESSION['user_upload_receipts_from_file']);
+	}
+	header('Content-Type: text/html; charset=utf-8');
+	include 'connect.php';
+	function headerOut($curmenu, $treesuf = null){
+	$tabTitle = 'Ценовичок - '.$curmenu;
+?>
 <html>
 	<head>
 		<title><?=$tabTitle?></title>
@@ -47,11 +47,11 @@ $tabTitle = 'Ценовичок - '.$curmenu;
 		<link rel="stylesheet" href="../template/tablesorter/default.css"/>
 		<link rel="stylesheet" href="../template/tablesorter/jquery.tabs.css"/>
 		<link rel="stylesheet" href="../template/tablesorter/jquery.tabs-ie.css"/>
-		<?
+		<?php
 		if(!is_null($treesuf)) {
 		?>
 		<link rel="stylesheet" href="../template/jstree/themes/default/style.min.css" />
-		<? foreach($treesuf as $suf){?>
+		<?php foreach($treesuf as $suf){?>
 		<style>
                 .jstree-default a { white-space:normal !important; height: auto; }
                 .jstree-anchor { height: auto !important; }
@@ -66,7 +66,7 @@ $tabTitle = 'Ценовичок - '.$curmenu;
 		#tree<?=$suf?> .folder { background:url('../template/jstree/file_sprite.png') right bottom no-repeat; }
 		#tree<?=$suf?> .file { background:url('../template/jstree/file_sprite.png') 0 0 no-repeat; }
 		</style>
-		<?
+		<?php
 		}
 		}
 		?>
@@ -93,7 +93,7 @@ $tabTitle = 'Ценовичок - '.$curmenu;
 				<nav id="site-navigation" class="navigation main-navigation clr" role="navigation">
 					<div class="menu-top-main-container">
 						<ul id="menu-top-main" class="nav-menu dropdown-menu">
-					<?
+					<?php
 					foreach (array(
 						'Аналитика' => '/analytics/',
 						'Ввод данных' => '/smart_form/',
@@ -123,4 +123,4 @@ $tabTitle = 'Ценовичок - '.$curmenu;
 			</div>
 
 			<div id="main" class="site-main row clr fitvids">
-<? } ?>
+<?php } ?>
